@@ -5,11 +5,67 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Library</title>
 </head>
 <body>
-  
+  <header>
+    <section class="header-section">
+      <div class="title">
+        <img class="title-logo" src="assets\library-favicon.png" alt="My library Logo">
+        <h2>My Library</h2>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section class="col-my-library-books">
+      <div class="add-remove-btn">
+        <button>Add Book</button>
+        <button>Remove All</button>
+      </div>
+      <div class="added-books">this is my name</div>
+    </section>
+    <section class="col-input-container">
+      <div class="form-container">
+        <form action="submit">
+          <h2>Add New Book</h2>
+          <div class="input-block">
+            <input type="text" class="input title" id="book-title" required>
+            <span class="placeholder">What is the title of the Book?</span>
+          </div>
+          <div class="input-block">
+            <input type="text" class="input name" id="book-name" required>
+            <span class="placeholder">Who is the Author of the Book?</span>
+          </div>
+          <div class="input-block">
+            <input type="text" class="input pages" id="book-pages" required>
+            <span class="placeholder">How many page are in the book?</span>
+          </div>
+          <label class="checkbox">
+            <input type="checkbox" name="checkbox" class="status">
+            <span>I have already read the Book!</span>
+          </label><br>
+          <button>Submit</button>
+        </form>
+      </div>
+    </section>
+    <aside class="col-my-library-info">
+      <h1>Information</h1>
+      <div class="info total-book">
+        <h3>Total Books</h3> 
+        <span>0</span>
+      </div>
+      <div class="info book-read">
+        <h3>Books Read</h3> 
+        <span>0</span>
+      </div>
+      <div class="info book-unread">
+        <h3>Books Unread</h3> 
+        <span>0</span>
+      </div>
+    </aside>
+  </main>
 </body>
 </html>
