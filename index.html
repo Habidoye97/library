@@ -23,10 +23,12 @@
   <main>
     <section class="col-my-library-books">
       <div class="add-remove-btn">
-        <button>Add Book</button>
+        <button id="add">Add Book</button>
         <button>Remove All</button>
       </div>
-      <div class="added-books">this is my name</div>
+      <div class="added-books">
+
+      </div>
     </section>
     <section class="col-input-container">
       <div class="form-container">
@@ -37,15 +39,15 @@
             <span class="placeholder">What is the title of the Book?</span>
           </div>
           <div class="input-block">
-            <input type="text" class="input name" id="book-name" required>
+            <input type="text" class="input author" id="book-name" required>
             <span class="placeholder">Who is the Author of the Book?</span>
           </div>
           <div class="input-block">
-            <input type="text" class="input pages" id="book-pages" required>
+            <input type="number" class="input pages" id="book-pages" required>
             <span class="placeholder">How many page are in the book?</span>
           </div>
           <label class="checkbox">
-            <input type="checkbox" name="checkbox" class="status">
+            <input type="checkbox" name="checkbox" class="status" id="status">
             <span>I have already read the Book!</span>
           </label><br>
           <button>Submit</button>

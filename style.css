@@ -106,7 +106,7 @@ form {
   margin: 25px 0;
 }
 
-.input-block input[type="text"] {
+input[type="text"], input[type="number"]{
   width: 100%;
   line-height: 1.15em;
   font-size: 100%;
