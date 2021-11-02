@@ -7,34 +7,38 @@ function Book(title, author, pages, status) {
   this.status = status
 }
 
-function addBookToLibrary(title, author, pages, status) {
-  const book = new Book(title, author, pages, status);
-  myLibrary.push(book)
-  
+if (localStorage.getItem('books') === null) {
+  myLibrary = [];
+} else {
+  const booksFromStorage = JSON.parse(localStorage.getItem('books'));
+  myLibrary = booksFromStorage;
 }
 
 function getForminput() {
-  const form = document.querySelector('form');
+  const form = document.querySelector('.form');
   const inputTitle = document.querySelector('#book-title');
   const inputAuthor = document.querySelector('#book-name');
   const inputPages = document.querySelector('#book-pages')
-  const statusCheck = document.querySelector('status')
-  if(inputTitle.value !== '' & inputAuthor.value !== ' ' & inputPages.value !== '' & inputPages.value !== '' & inputPages.value >0) {
+  const statusCheck = document.querySelector('.status')
+  if(inputTitle.value !== '' & inputAuthor.value !== ' ' & inputPages.value !== '' & inputPages.value !== '' & inputPages.value > 0) {
     if(statusCheck.checked) {
       addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, true)
     } else {
-      addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, true)
+      addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, false)
     }
     form.reset()
   }
+  
 }
 
 function showBooksinLibrary () {
+  localStorage.setItem('books', JSON.stringify(myLibrary));
+  showLibraryInfo();
   const addedBooks = document.querySelector('.added-books')
   addedBooks.textContent = '';
   for (let i = 0; i < myLibrary.length; i++) {
     const bookContainer = document.createElement('div')
-    bookContainer.classList.add('bookconatiner');
+    bookContainer.classList.add('bookcontainer');
     addedBooks.appendChild(bookContainer);
     const bookTitle = document.createElement('h2');
     bookTitle.textContent = myLibrary[i].title
@@ -46,7 +50,7 @@ function showBooksinLibrary () {
     bookAuthor.textContent = myLibrary[i].author;
     bookContainer.appendChild(bookAuthor);
     const bookPages = document.createElement('h4')
-    bookPages.textContent = myLibrary[i].pages
+    bookPages.textContent = myLibrary[i].pages + " pages";
     bookContainer.appendChild(bookPages);
     const bookStatusbtn = document.createElement('button')
     if (myLibrary[i].status === true) {
@@ -61,12 +65,43 @@ function showBooksinLibrary () {
   }
 }
 
-const inputContainer = document.querySelector('.col-input-container')
+function showLibraryInfo () {
+  const totalBook = document.getElementById('total-books');
+  const bookRead = document.getElementById('book-read');
+  const bookUnread = document.getElementById('book-unread');
+  let readCount = 0;
+  let unreadCount = 0;
+  totalBook.textContent = myLibrary.length;
+  for (let i = 0; i < myLibrary.length; i++) {
+    if(myLibrary[i].status === true) {
+      readCount += 1;
+      bookRead.textContent = readCount;
+    }else {
+      unreadCount += 1;
+      bookUnread.textContent = unreadCount;
+    }
+  }
+}
+
+function addBookToLibrary(title, author, pages, status) {
+  const book = new Book(title, author, pages, status);
+  myLibrary.push(book)
+  showBooksinLibrary()
+}
+
+const inputContainer = document.getElementById('col-input-container')
 const addBookbtn = document.getElementById('add')
 addBookbtn.addEventListener('click', function() {
   inputContainer.style.display = 'flex'
 });
 
-inputContainer.addEventListener('click', function(){
-  inputContainer.style.dispay = 'none'
-})
+const submit = document.querySelector('#submitbtn');
+submit.addEventListener('click', function() {
+  getForminput()
+  inputContainer.style.display = 'none';
+});
+
+
+
+showBooksinLibrary();
+showLibraryInfo();

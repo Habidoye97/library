@@ -59,6 +59,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 40px;
 }
 
 .add-remove-btn {
@@ -68,6 +69,37 @@ main {
 
 .add-remove-btn button {
   margin: 0 20px;
+}
+
+.added-books {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bookcontainer {
+  max-width: 320px;
+  text-align: center;
+  background-color: var(--input-container-bg);
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 5px;
+  color: pink;
+  padding: 10px;
+}
+
+.bookcontainer button {
+  display: inline;
+  margin: 5px;
+  background-color: pink;
+  border: none;
+}
+
+.bookcontainer h4 {
+  text-align: right;
+}
+
+.bookcontainer p {
+  font-style: italic;
 }
 
 .col-input-container {
@@ -123,7 +155,7 @@ input[type="text"], input[type="number"]{
   margin-top: 20px;
 }
 
-button {
+button, input[type="submit"] {
   background: var(--submit-bg);
   padding: 10px 16px;
   color: var(--header-bg-color);
@@ -138,7 +170,7 @@ button {
   transition: background 2s, color 2s;
   display: block;
   margin: auto;
-  width: 140px;
+  width: 110px;
   box-sizing: inherit;
 }
 

@@ -26,13 +26,13 @@
         <button id="add">Add Book</button>
         <button>Remove All</button>
       </div>
-      <div class="added-books">
+      <div id="added-books-container" class="added-books">
 
       </div>
     </section>
-    <section class="col-input-container">
+    <section id="col-input-container" class="col-input-container">
       <div class="form-container">
-        <form action="submit">
+        <form class="form" action="submit">
           <h2>Add New Book</h2>
           <div class="input-block">
             <input type="text" class="input title" id="book-title" required>
@@ -50,7 +50,7 @@
             <input type="checkbox" name="checkbox" class="status" id="status">
             <span>I have already read the Book!</span>
           </label><br>
-          <button>Submit</button>
+          <input type="submit" value="SUBMIT" id="submitbtn">
         </form>
       </div>
     </section>
@@ -58,15 +58,15 @@
       <h1>Information</h1>
       <div class="info total-book">
         <h3>Total Books</h3> 
-        <span>0</span>
+        <span id="total-books">0</span>
       </div>
       <div class="info book-read">
         <h3>Books Read</h3> 
-        <span>0</span>
+        <span id="book-read">0</span>
       </div>
       <div class="info book-unread">
         <h3>Books Unread</h3> 
-        <span>0</span>
+        <span id="book-unread">0</span>
       </div>
     </aside>
   </main>
