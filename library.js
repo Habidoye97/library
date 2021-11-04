@@ -53,15 +53,18 @@ function showBooksinLibrary () {
     bookPages.textContent = myLibrary[i].pages + " pages";
     bookContainer.appendChild(bookPages);
     const bookStatusbtn = document.createElement('button')
+    bookStatusbtn.setAttribute("id", "status-btn")
     if (myLibrary[i].status === true) {
       bookStatusbtn.textContent = "READ";
     } else {
       bookStatusbtn.textContent = "NOT READ"
     }
     bookContainer.appendChild(bookStatusbtn)
+    bookStatusbtn.addEventListener('click', changeStatus)
     const bookDelete = document.createElement('button');
     bookDelete.textContent = "DELETE";
     bookContainer.appendChild(bookDelete)
+    bookDelete.addEventListener('click', removeBook)
   }
 }
 
@@ -71,6 +74,8 @@ function showLibraryInfo () {
   const bookUnread = document.getElementById('book-unread');
   let readCount = 0;
   let unreadCount = 0;
+  bookRead.textContent = 0;
+  bookUnread.textContent = 0;
   totalBook.textContent = myLibrary.length;
   for (let i = 0; i < myLibrary.length; i++) {
     if(myLibrary[i].status === true) {
@@ -102,6 +107,30 @@ submit.addEventListener('click', function() {
 });
 
 
+const removeAll = document.getElementById('remove-all');
+removeAll.addEventListener('click', function() {
+  let checkRemoveAll = confirm('Are you sure you want to DELETE all books in the Library')
+  if (checkRemoveAll === true) {
+    localStorage.removeItem('books')
+    myLibrary.length = 0;
+    showBooksinLibrary()
+    showLibraryInfo()
+  }else {
+    return
+  }
+})
+
+function removeBook() {
+  
+  const div = EventTarget.parentNode
+  div.style.display = 'none'
+}
+
+function changeStatus() {
+  if (bookStatusbtn.textContent === "READ") {
+    bookStatusbtn.textContent = "NOT READ"
+  }
+}
 
 showBooksinLibrary();
 showLibraryInfo();
