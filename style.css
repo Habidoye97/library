@@ -24,6 +24,7 @@ header {
   left: 0;
   z-index: 1;
   box-sizing: border-box;
+  
 }
 
 .header-section {
@@ -31,6 +32,8 @@ header {
   height: 100%;
   padding: 16px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {
@@ -43,6 +46,31 @@ header {
 
 .title-logo {
   height: 100%;
+}
+
+.infointoggle, .infoouttoggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  right: 10px;
+  z-index: 2;
+}
+
+.material-icons {
+  color: white;
+  font-size: 2em;
+}
+
+#outinfoToggle, #inInfoToggle {
+  display: none;
+}
+
+#inInfoToggle:checked ~ .infoouttoggle {
+  display: inline;
+}
+
+#inInfoToggle:checked ~ .infointoggle {
+  display: none;
 }
 
 main {
@@ -64,7 +92,6 @@ main {
 
 .add-remove-btn {
   display: flex;
-  
 }
 
 .add-remove-btn button {
@@ -204,10 +231,18 @@ button:hover {
 
 .col-my-library-info {
   width: 300px;
+  box-sizing: border-box;
+}
+
+.library-info-details {
+  width: 100%;
   background-color: var(--input-container-bg);
   padding: 20px;
   box-sizing: inherit;
   color: white;
+  height: 60vh;
+  border-radius: 5px;
+  
 }
 
 .col-my-library-info  h1 {
@@ -222,4 +257,41 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media only screen and (max-width: 979px) {
+  .infointoggle {
+    display: initial;
+  }
+
+  .col-my-library-info {
+    position: relative;
+    width: 0px;
+  }
+
+  .library-info-details {
+    display: none;
+  }
+
+  #inInfoToggle:checked ~ .library-info-details {
+    display: initial;
+    position: fixed;
+    top: 72px;
+    right: 0;
+    width: 300px;
+  }
+
+  .col-my-library-books {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .add-remove-btn {
+    display: initial;
+  }
+  
+  #add {
+    margin-bottom: 10px;
+  }
 }

@@ -19,6 +19,7 @@
         <img class="title-logo" src="assets\library-favicon.png" alt="My library Logo">
         <h2>My Library</h2>
       </div>
+      
     </section>
   </header>
   <main>
@@ -56,18 +57,29 @@
       </div>
     </section>
     <aside class="col-my-library-info">
-      <h1>Information</h1>
-      <div class="info total-book">
-        <h3>Total Books</h3> 
-        <span id="total-books">0</span>
-      </div>
-      <div class="info book-read">
-        <h3>Books Read</h3> 
-        <span id="book-read">0</span>
-      </div>
-      <div class="info book-unread">
-        <h3>Books Unread</h3> 
-        <span id="book-unread">0</span>
+      
+      <input type="radio" id="inInfoToggle" name="display-menu">
+      <label for="inInfoToggle" class="infointoggle">
+        <i class="material-icons">menu</i>
+      </label>
+      <input type="radio" id="outinfoToggle" name="display-menu">
+      <label for="outinfoToggle" class="infoouttoggle">
+        <i class="material-icons">close</i>
+      </label>
+      <div class="library-info-details">
+        <h1>Information</h1>
+        <div class="info total-book">
+          <h3>Total Books</h3> 
+          <span id="total-books">0</span>
+        </div>
+        <div class="info book-read">
+          <h3>Books Read</h3> 
+          <span id="book-read">0</span>
+        </div>
+        <div class="info book-unread">
+          <h3>Books Unread</h3> 
+          <span id="book-unread">0</span>
+        </div>
       </div>
     </aside>
   </main>
