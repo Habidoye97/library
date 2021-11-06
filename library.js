@@ -1,6 +1,7 @@
 let myLibrary = [];
 
 function Book(title, author, pages, status) {
+  this.id = JSON.parse(localStorage.getItem('books')).length + 1;
   this.title = title
   this.author = author
   this.pages = pages 
@@ -60,11 +61,12 @@ function showBooksinLibrary () {
       bookStatusbtn.textContent = "NOT READ"
     }
     bookContainer.appendChild(bookStatusbtn)
-    bookStatusbtn.addEventListener('click', changeStatus)
+    bookStatusbtn.addEventListener('click', function() { changeStatus(myLibrary[i].id) })
     const bookDelete = document.createElement('button');
     bookDelete.textContent = "DELETE";
+    bookDelete.setAttribute("id", "delete-btn")
     bookContainer.appendChild(bookDelete)
-    bookDelete.addEventListener('click', removeBook)
+    bookDelete.addEventListener('click', function() {deleteBook(myLibrary[i].id)});
   }
 }
 
@@ -126,10 +128,33 @@ function removeBook() {
   div.style.display = 'none'
 }
 
-function changeStatus() {
-  if (bookStatusbtn.textContent === "READ") {
-    bookStatusbtn.textContent = "NOT READ"
+function changeStatus(bookId) {
+  console.log(bookId);
+  const storedBooks = JSON.parse(localStorage.getItem('books'));
+  // find the affected book
+  const selectedBook = storedBooks.find(item => item.id === bookId);
+  console.log(selectedBook);
+  // update the status or any other property
+  selectedBook.status = selectedBook.status === true ? false : true;
+  // effect changes on local storage    
+  console.log(selectedBook);
+  myLibrary = storedBooks.map(function(book) {
+    if (book.id === bookId) { return selectedBook; } else { return book; }
+  });
+  localStorage.setItem('books', JSON.stringify(myLibrary));
+  showBooksinLibrary();
+}
+
+function deleteBook(bookId) {
+  const storedBooks = JSON.parse(localStorage.getItem('books'));
+  const selectedBook = storedBooks.find(item => item.id === bookId);
+  const index = storedBooks.indexOf(selectedBook)
+  if (index > -1) {
+     const removedBook = storedBooks.splice(index, 1)
+     myLibrary = storedBooks;
   }
+  localStorage.setItem('books', JSON.stringify(myLibrary));
+  showBooksinLibrary();
 }
 
 showBooksinLibrary();
