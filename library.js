@@ -122,12 +122,6 @@ removeAll.addEventListener('click', function() {
   }
 })
 
-function removeBook() {
-  
-  const div = EventTarget.parentNode
-  div.style.display = 'none'
-}
-
 function changeStatus(bookId) {
   console.log(bookId);
   const storedBooks = JSON.parse(localStorage.getItem('books'));

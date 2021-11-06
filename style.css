@@ -138,7 +138,7 @@ main {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 3;
   display: none;
   justify-content: center;
   align-items: center;
@@ -222,6 +222,8 @@ button, input[type="submit"] {
 form h2 {
   text-align: center;
   color: var(--submit-bg);
+  height: 1.5rem;
+  padding: 0 0.5rem;
 }
 
 button:hover {
