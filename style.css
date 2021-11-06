@@ -154,6 +154,15 @@ main {
   justify-content: center;
   box-sizing: border-box;
   border-radius: 10px;
+  position: relative;
+}
+
+.form-close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
 }
 
 form {

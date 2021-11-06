@@ -151,5 +151,10 @@ function deleteBook(bookId) {
   showBooksinLibrary();
 }
 
+const closeForm = document.getElementById('form-close')
+closeForm.addEventListener('click', function(){
+  inputContainer.style.display = 'none';
+})
+
 showBooksinLibrary();
 showLibraryInfo();
