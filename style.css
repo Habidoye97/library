@@ -118,7 +118,7 @@ main {
 .bookcontainer button {
   display: inline;
   margin: 5px;
-  background-color: pink;
+  
   border: none;
   width: 120px;
   color: var(--submit-bg);

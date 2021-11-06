@@ -21,14 +21,27 @@ function getForminput() {
   const inputAuthor = document.querySelector('#book-name');
   const inputPages = document.querySelector('#book-pages')
   const statusCheck = document.querySelector('.status')
-  if(inputTitle.value !== '' & inputAuthor.value !== ' ' & inputPages.value !== '' & inputPages.value !== '' & inputPages.value > 0) {
-    if(statusCheck.checked) {
-      addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, true)
-    } else {
-      addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, false)
+  const checkBooks = JSON.parse(localStorage.getItem('books'));
+  console.log(checkBooks)
+  for (i=0; i<checkBooks.length; i++){
+    console.log(checkBooks[i].title);
+    if (checkBooks[i].title === inputTitle.value || checkBooks[i].author === inputAuthor.value) {
+      alert("The Book Already Exist in the Library")
+      form.reset()
+      return
+    }else {
+      if(inputTitle.value !== '' & inputAuthor.value !== ' ' & inputPages.value !== '' & inputPages.value !== '' & inputPages.value > 0) {
+        if(statusCheck.checked) {
+          addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, true)
+        } else {
+          addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, false)
+        }
+        form.reset()
+      }
+
     }
-    form.reset()
   }
+ 
   
 }
 
@@ -57,14 +70,17 @@ function showBooksinLibrary () {
     bookStatusbtn.setAttribute("id", "status-btn")
     if (myLibrary[i].status === true) {
       bookStatusbtn.textContent = "READ";
+      bookStatusbtn.style.backgroundColor = "pink"
     } else {
       bookStatusbtn.textContent = "NOT READ"
+      bookStatusbtn.style.backgroundColor = "red"
     }
     bookContainer.appendChild(bookStatusbtn)
     bookStatusbtn.addEventListener('click', function() { changeStatus(myLibrary[i].id) })
     const bookDelete = document.createElement('button');
     bookDelete.textContent = "DELETE";
-    bookDelete.setAttribute("id", "delete-btn")
+    bookDelete.setAttribute("id", "delete-btn");
+    bookDelete.style.backgroundColor = 'red'
     bookContainer.appendChild(bookDelete)
     bookDelete.addEventListener('click', function() {deleteBook(myLibrary[i].id)});
   }
