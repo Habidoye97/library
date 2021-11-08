@@ -1,6 +1,308 @@
+:root {
+  --header-bg-color: #009579;
+  --body-bg: #0affd2;
+  --input-container-bg: rgba(0, 0, 0, 0.7);
+  --submit-bg: #fff;
+  --submit-bg-hover: #000;
+  --library-info-bg: rgba(66, 66, 66, 0.95);
+}
 body {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100%;
+  height: 72px;
+  background: var(--header-bg-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  
+}
+
+.header-section {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-transform: uppercase;
+}
+
+.title-logo {
+  height: 100%;
+}
+
+.infointoggle, .infoouttoggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  right: 10px;
+  z-index: 2;
+}
+
+.material-icons {
+  color: white;
+  font-size: 2em;
+}
+
+#outinfoToggle, #inInfoToggle {
+  display: none;
+}
+
+#inInfoToggle:checked ~ .infoouttoggle {
+  display: inline;
+}
+
+#inInfoToggle:checked ~ .infointoggle {
+  display: none;
+}
+
+main {
+  padding: 72px 10px 0 10px;
+  min-height: 100vh;
+  background: linear-gradient(var(--header-bg-color), var(--body-bg));
+  display: flex;
+  justify-content: space-between;
+  box-sizing: inherit;
+}
+
+.col-my-library-books {
+  width: calc(100% - 300px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.add-remove-btn {
+  display: flex;
+}
+
+.add-remove-btn button {
+  margin: 0 20px;
+}
+
+.added-books {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 30px;
+}
+
+.bookcontainer {
+  max-width: 320px;
+  text-align: center;
+  background-color: var(--input-container-bg);
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 5px;
+  color: pink;
+  padding: 20px;
+}
+
+.bookcontainer button {
+  display: inline;
+  margin: 5px;
+  
+  border: none;
+  width: 120px;
+  color: var(--submit-bg);
+}
+
+.bookcontainer h4 {
+  text-align: right;
+}
+
+.bookcontainer p {
+  font-style: italic;
+}
+
+.col-input-container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--input-container-bg);
+}
+
+.form-container {
+  width: 400px;
+  padding: 30px;
+  background: var(--header-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position: relative;
+}
+
+.form-close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+}
+
+form {
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  color: var(--submit-bg);
+}
+
+.input-block {
+  width: 100%;
+  margin: 40px 0;
+  position: relative;
+}
+
+input[type="text"], input[type="number"]{
+  width: 100%;
+  line-height: 1.15em;
+  font-size: 100%;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: inherit;
+  text-transform: none;
+}
+
+.input-block span.placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+  transform-origin: 0% 0%;
+  pointer-events: none;
+}
+
+.input-block input:valid + span.placeholder,
+.input-block input:focus + span.placeholder {
+  transform: scale(0.8) translateY(-30px);
+}
+
+.checkbox {
+  display: block;
+  margin-top: 20px;
+}
+
+button, input[type="button"] {
+  background: var(--submit-bg);
+  padding: 10px 16px;
+  color: var(--header-bg-color);
+  text-transform: uppercase;
+  font-weight: 700;
+  outline: none;
+  border: 1px solid var(--submit-bg);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: background 1s, color 1s;
+  display: block;
+  margin: auto;
+  width: 110px;
+  box-sizing: inherit;
+}
+
+form h2 {
+  text-align: center;
+  color: var(--submit-bg);
+  height: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+button:hover {
+  background: transparent;
+  color: var(--submit-bg-hover);
+}
+
+.col-my-library-info {
+  width: 300px;
+  box-sizing: border-box;
+}
+
+.library-info-details {
+  width: 100%;
+  background-color: var(--input-container-bg);
+  padding: 20px;
+  box-sizing: inherit;
+  color: white;
+  height: 60vh;
+  border-radius: 5px;
+  
+}
+
+.col-my-library-info  h1 {
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  padding: 10px 0;
+  text-align: center;
+  border-color: var(--submit-bg-hover);
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (max-width: 979px) {
+  .infointoggle {
+    display: initial;
+  }
+
+  .col-my-library-info {
+    position: relative;
+    width: 0px;
+  }
+
+  .library-info-details {
+    display: none;
+  }
+
+  #inInfoToggle:checked ~ .library-info-details {
+    display: initial;
+    position: fixed;
+    top: 72px;
+    right: 0;
+    width: 300px;
+  }
+
+  .col-my-library-books {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .add-remove-btn {
+    display: initial;
+  }
+  
+  #add {
+    margin-bottom: 10px;
+  }
 }
