@@ -22,26 +22,26 @@ function getForminput() {
   const inputPages = document.querySelector('#book-pages')
   const statusCheck = document.querySelector('.status')
   const checkBooks = JSON.parse(localStorage.getItem('books'));
-  console.log(checkBooks)
   for (i=0; i<checkBooks.length; i++){
     console.log(checkBooks[i].title);
-    if (checkBooks[i].title === inputTitle.value || checkBooks[i].author === inputAuthor.value) {
+    if (checkBooks[i].title === inputTitle.value && checkBooks[i].author === inputAuthor.value) {
       alert("The Book Already Exist in the Library")
       form.reset()
       return
-    }else {
-      if(inputTitle.value !== '' & inputAuthor.value !== ' ' & inputPages.value !== '' & inputPages.value !== '' & inputPages.value > 0) {
-        if(statusCheck.checked) {
-          addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, true)
-        } else {
-          addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, false)
-        }
-        form.reset()
-      }
-
     }
   }
- 
+  if(inputTitle.value !== '' & inputAuthor.value !== ' ' & inputPages.value !== '' & inputPages.value !== '' & inputPages.value > 0) {
+    if(statusCheck.checked) {
+      addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, true)
+    } else {
+      addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, false)
+    }
+    form.reset()
+  }
+    
+    
+  
+  
   
 }
 
@@ -118,7 +118,7 @@ addBookbtn.addEventListener('click', function() {
   inputContainer.style.display = 'flex'
 });
 
-const submit = document.querySelector('#submitbtn');
+const submit = document.getElementById('submitbtn');
 submit.addEventListener('click', function() {
   getForminput()
   inputContainer.style.display = 'none';

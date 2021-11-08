@@ -209,7 +209,7 @@ input[type="text"], input[type="number"]{
   margin-top: 20px;
 }
 
-button, input[type="submit"] {
+button, input[type="button"] {
   background: var(--submit-bg);
   padding: 10px 16px;
   color: var(--header-bg-color);
